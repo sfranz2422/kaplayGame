@@ -1,5 +1,5 @@
 {
-	"name": "testGame",
+	"name": "testgame",
 	"type": "module",
 	"scripts": {
 		"build": "vite build",
@@ -13,5 +13,19 @@
 	"devDependencies": {
 		"@types/node": "^24.5.2",
 		"vite": "^7.1.6"
-	}
+	},
+	"version": "1.0.0",
+	"description": "- `src` - source code for your kaplay project - `dist` - distribution folder, contains your index.html, built js bundle and static assets",
+	"main": "vite.config.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sfranz2422/kaplayGame.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/sfranz2422/kaplayGame/issues"
+	},
+	"homepage": "https://github.com/sfranz2422/kaplayGame#readme"
 }

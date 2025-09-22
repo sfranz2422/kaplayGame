@@ -1,4 +1,6 @@
 import {colorizeBackground, drawTiles, fetchMapData} from "../utils.js";
+import {generatePlayerComponents} from "../entities/player.js";
+import {generateSlimeComponents} from "../entities/slime.js";
 
 export default async function world(){
     colorizeBackground(76,170,255)
@@ -7,11 +9,11 @@ const map = add([
     pos(0,0)
     ]
 )
-    const entities = {
-        player:null,
-        slimes:[],
+const entities = {
+    player:null,
+    slimes:[],
 
-    }
+}
 
     const layers = mapData.layers;
     for (const layer of layers){
@@ -21,7 +23,16 @@ const map = add([
             continue;
         }
         if (layer.name === "SpawnPoints"){
-            // TODO
+            for (const object of layer.objects){
+                if (object.name === "player"){
+                    entities.player = map.add(generatePlayerComponents(vec2(object.x, object.y)))
+                    continue
+                }
+
+                if (object.name === "slime"){
+                    entities.slimes.push(map.add(generateSlimeComponents(vec2(object.x, object.y))))
+                }
+            }
             // need custom logic
 
             continue;
@@ -30,5 +41,6 @@ const map = add([
 
 
     }
-camScale(2)
+camScale(4)
+    camPos(entities.player.worldPos())
 }

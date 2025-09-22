@@ -22,8 +22,10 @@ function start() {
         {
             sliceX:39,
             sliceY:31,
-            anim:{
+            anims:{
                 "player-idle-down":936,
+                "slime-idle-down":858,
+
             }
 
         });

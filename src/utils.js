@@ -1,7 +1,14 @@
+export function playAnimIfNotPlaying(gameObj,animationName){
+    if(gameObj.curAnim() !== animationName){
+        gameObj.play(animationName)
+    }
+}
+
 export async function fetchMapData(mapPath){
     return await (await fetch(mapPath)).json()
 
 }
+
 
 export function colorizeBackground(r,g,b){
 add([
@@ -33,3 +40,27 @@ let nbOfDrawnTiles = 0
         ])
     }
 }
+
+export function generateColliderBoxComponents(width, height,position,tag){
+    return [
+        area({
+            shape:new Rect(vec2(0),width,height),
+        }),
+        pos(position),
+        body({isStatic:true}),
+        offscreen(),
+        tag,
+    ]
+}
+export function drawBoundries(map,layer){
+    for (const object of layer.objects){
+        map.add(generateColliderBoxComponents(
+            object.width,
+            object.height,
+            vec2(object.x,object.y+16),
+            object.name,
+            )
+            );
+    }
+}
+

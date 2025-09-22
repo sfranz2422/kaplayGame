@@ -1,5 +1,5 @@
-import {colorizeBackground, drawTiles, fetchMapData} from "../utils.js";
-import {generatePlayerComponents} from "../entities/player.js";
+import {colorizeBackground, drawBoundries, drawTiles, fetchMapData} from "../utils.js";
+import {generatePlayerComponents, setPlayerMovement} from "../entities/player.js";
 import {generateSlimeComponents} from "../entities/slime.js";
 
 export default async function world(){
@@ -18,18 +18,17 @@ const entities = {
     const layers = mapData.layers;
     for (const layer of layers){
         if (layer.name === "Boundaries"){
-            // TODO
-            // need custom logic
+            drawBoundries(map,layer)
             continue;
         }
         if (layer.name === "SpawnPoints"){
             for (const object of layer.objects){
                 if (object.name === "player"){
                     entities.player = map.add(generatePlayerComponents(vec2(object.x, object.y)))
-                    continue
+                    // continue
                 }
 
-                if (object.name === "slime"){
+                else if (object.name === "slime"){
                     entities.slimes.push(map.add(generateSlimeComponents(vec2(object.x, object.y))))
                 }
             }
@@ -41,6 +40,7 @@ const entities = {
 
 
     }
-camScale(4)
-    camPos(entities.player.worldPos())
+setCamScale(4)
+    setCamPos(entities.player.worldPos())
+    setPlayerMovement(entities.player)
 }

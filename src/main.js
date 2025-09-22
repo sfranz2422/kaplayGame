@@ -24,6 +24,26 @@ function start() {
             sliceY:31,
             anims:{
                 "player-idle-down":936,
+                "player-down":{
+                  from:936,
+                  to:939,
+                  loop:true,
+
+                },
+                "player-idle-side":976,
+                "player-idle-up":1014,
+                "player-side":{
+                    from:976,
+                    to:978,
+                    loop:true,
+
+                },
+                "player-up":{
+                    from:1014,
+                    to:1017,
+                    loop:true,
+
+                },
                 "slime-idle-down":858,
 
             }

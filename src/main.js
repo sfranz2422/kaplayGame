@@ -1,7 +1,7 @@
 
 import kaplay from "https://unpkg.com/kaplay@3001.0.19/dist/kaplay.mjs";
 
-import world from "/scenes/world.js"
+import world from "./scenes/world.js"
 
 // Create kaboom *when called*, not on import.
 function initKaplay() {
